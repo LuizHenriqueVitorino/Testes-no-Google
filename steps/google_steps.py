@@ -1,20 +1,24 @@
 from behave import *
+from nose.tools import assert_equal
+from pages.google_page import GooglePage
+
+googlePage = GooglePage()
 
 @given('que acesso a página do google')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Given que acesso a página do google')
+    googlePage.acess_page('https://www.google.com')
 
 
 @given('que preencho o campo de pesquisa com Python')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Given que preencho o campo de pesquisa com Python')
+    googlePage.send_keys_input_pesquisa()
 
 
 @when('clico no botão de pesquisar')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When clico no botão de pesquisar')
+    googlePage.click_button_pesquisar()
 
 
 @then('devo visualizar os resultados')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then devo visualizar os resultados')
+    assert_equal(googlePage.get_text_title_resultado(), 'Python')
